@@ -8,8 +8,8 @@ public interface UsersInterface {
 
 	public ObservableList<User> getUsers();
 	
-	public void changePass(String username, String newPassword);
+	public void changePass(String username, String newPass);
 	
-	public void addUser(String username, String password);
+	public void addUser(String username, String pass);
 
 }
