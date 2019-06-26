@@ -124,11 +124,13 @@ public class LoginStage {
 
 		// setting some stage (window) properties
 		stage.setTitle(Strings.titleLogin);
-		stage.setResizable(false);
+		stage.setResizable(true);
 
 		// showing the created UI
 		stage.show();
-	btnLogin.setOnAction(e -> {
+		
+		// creating expression lambda to btnLogin
+		btnLogin.setOnAction(e -> {
 		login(stage);
 
 	});

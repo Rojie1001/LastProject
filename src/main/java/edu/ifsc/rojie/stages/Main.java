@@ -6,13 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import com.jfoenix.controls.JFXButton;
 import edu.ifsc.rojie.util.Strings;
 
@@ -36,6 +31,7 @@ public class Main  {
 	private Label info02;
 	private Label info03;
 	
+
 	
 	// Method that go HousesStage
 	public void goHousesStage(Stage stage) {
@@ -61,14 +57,15 @@ public class Main  {
 		// creating pane to MainStage
 		AnchorPane paneMain = new AnchorPane();
 		paneMain.setPrefSize(900, 900);
+	
 		Scene scene = new Scene(paneMain);
-		stage.initStyle(StageStyle.TRANSPARENT);  
-		paneMain.setMaxWidth(Region.USE_PREF_SIZE);
-		paneMain.setMaxHeight(Region.USE_PREF_SIZE);
-		paneMain.setBackground(Background.EMPTY);
-		String style = "-fx-background-color: rgba(255, 255, 255, 0.5);";
-		paneMain.setStyle(style);
 		stage.setScene(scene);
+		
+		//
+		
+		
+		
+		
 		
 		//Creating button Home
 		btnHome = new JFXButton(Strings.home);

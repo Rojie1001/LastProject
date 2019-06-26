@@ -23,6 +23,9 @@ public class Strings {
 	//RegisterStage Strings
 	public static final String name = "Digite seu nome";
 	public static final String rpassword = "Digite uma senha";
+	
+	//HousesStage Strings
+	public static final String txtcombo = "Escolha uma Opção";
 
 	//Title
 	public static final String titleLogin = "Login";
