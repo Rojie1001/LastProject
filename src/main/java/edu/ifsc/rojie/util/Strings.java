@@ -26,7 +26,9 @@ public class Strings {
 	
 	//HousesStage Strings
 	public static final String txtcombo = "Escolha uma Opção";
-
+	public static final String btnSubmit = "Enviar";
+	
+	
 	//Title
 	public static final String titleLogin = "Login";
 	public static final String loginError = "Error to Login";

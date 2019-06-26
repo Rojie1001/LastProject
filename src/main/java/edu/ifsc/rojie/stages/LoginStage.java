@@ -11,7 +11,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
-
 import edu.ifsc.rojie.entities.User;
 import edu.ifsc.rojie.util.LoginError;
 //import edu.ifsc.rojie.db.AdminUser;
@@ -31,7 +30,7 @@ public class LoginStage {
 	private ImageView imgLogin;
 	private ImageView imgPassword;
 	private Label lblLogin;
-	
+
 	private boolean login(Stage stage) {
 
 		try {
@@ -43,9 +42,8 @@ public class LoginStage {
 
 		return true;
 	}
-		
-	
-	public LoginStage(Stage stage) throws Exception {
+
+	public LoginStage(Stage stage) {
 
 		// Creating pane to login
 		AnchorPane paneLogin = new AnchorPane();
@@ -53,7 +51,7 @@ public class LoginStage {
 		Scene scene = new Scene(paneLogin);
 		stage.setScene(scene);
 
-		//creating Label 
+		// creating Label
 		lblLogin = new Label();
 		lblLogin.setLayoutX(160);
 		lblLogin.setLayoutY(50);
@@ -61,7 +59,7 @@ public class LoginStage {
 		lblLogin.setMinWidth(200);
 		lblLogin.setPrefWidth(150);
 		lblLogin.setText(Strings.lblLogin);
-		
+
 		// creating the username textfield
 		txtUsername = new JFXTextField();
 		txtUsername.setLayoutX(110);
@@ -111,7 +109,6 @@ public class LoginStage {
 		imgPassword.setFitHeight(30);
 		imgPassword.setFitWidth(30);
 
-
 		// adding all created components to the pane
 		paneLogin.getChildren().add(btnLogin);
 		paneLogin.getChildren().add(txtUsername);
@@ -120,23 +117,22 @@ public class LoginStage {
 		paneLogin.getChildren().add(imgPassword);
 		paneLogin.getChildren().add(btnCadastro);
 		paneLogin.getChildren().add(lblLogin);
-		
 
 		// setting some stage (window) properties
 		stage.setTitle(Strings.titleLogin);
-		stage.setResizable(true);
+		stage.setResizable(false);
 
 		// showing the created UI
 		stage.show();
-		
+
 		// creating expression lambda to btnLogin
 		btnLogin.setOnAction(e -> {
-		login(stage);
+			login(stage);
 
-	});
-	
+		});
+
 	}
-	
+
 //	private  User checkLogin(String txtUsername, String txtPassword) throws LoginError {
 //		for (User user : users) {
 //			if  (user.getName().contentEquals(txtUsername) & (user.getPass().contentEquals(txtPassword)));
@@ -144,5 +140,5 @@ public class LoginStage {
 //		}
 //		
 //}
-	
+
 }
