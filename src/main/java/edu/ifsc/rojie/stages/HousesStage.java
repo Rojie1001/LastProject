@@ -31,7 +31,7 @@ public class HousesStage {
 				stage.close();
 			 }
 			else if(combobox.getSelectionModel().getSelectedItem() == " 2 ou mais banheiros") {
-				new PavStage(new Stage());
+				new BanStage(new Stage());
 				stage.close();
 			 }
 			if(combobox.getSelectionModel().getSelectedItem() == "Terreno acima de 300m²") {
