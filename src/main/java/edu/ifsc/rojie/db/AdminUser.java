@@ -23,7 +23,7 @@ public class AdminUser implements UsersInterface {
 	public ObservableList<User> getUsers() {
 		if (users == null) {
 			users = FXCollections.observableArrayList(new ArrayList<User>());
-			users.add(new User("", ""));
+			users.add(new User("admin", "admin"));
 		}
 		return users;
 	}

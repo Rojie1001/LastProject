@@ -12,12 +12,14 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
 
-import edu.ifsc.rojie.db.AdminUser;
-import edu.ifsc.rojie.db.SimpleUser;
 import edu.ifsc.rojie.entities.User;
-import edu.ifsc.rojie.exceptions.DBException;
-import edu.ifsc.rojie.exceptions.LoginException;
-import edu.ifsc.rojie.util.DB;
+import edu.ifsc.rojie.util.LoginError;
+//import edu.ifsc.rojie.db.AdminUser;
+//import edu.ifsc.rojie.db.SimpleUser;
+//import edu.ifsc.rojie.entities.User;
+//import edu.ifsc.rojie.exceptions.DBException;
+//import edu.ifsc.rojie.exceptions.LoginException;
+//import edu.ifsc.rojie.util.DB;
 import edu.ifsc.rojie.util.Strings;
 
 public class LoginStage {
@@ -30,8 +32,19 @@ public class LoginStage {
 	private ImageView imgPassword;
 	private Label lblLogin;
 	
-	
+	private boolean login(Stage stage) {
 
+		try {
+			new Main(new Stage());
+			stage.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return true;
+	}
+		
+	
 	public LoginStage(Stage stage) throws Exception {
 
 		// Creating pane to login
@@ -97,16 +110,6 @@ public class LoginStage {
 		imgPassword.setLayoutY(130);
 		imgPassword.setFitHeight(30);
 		imgPassword.setFitWidth(30);
-		
-		btnLogin.setOnMouseClicked(e -> {
-			try {
-				login(txtUsername.getText(), txtPassword.getText(), stage);
-			} catch (LoginException ex) {
-				System.out.println(ex.getMessage());
-			} catch (DBException ex2) {
-
-			}
-		});
 
 
 		// adding all created components to the pane
@@ -125,59 +128,19 @@ public class LoginStage {
 
 		// showing the created UI
 		stage.show();
-		
+	btnLogin.setOnAction(e -> {
+		login(stage);
 
+	});
+	
 	}
-	private void changeDB(String selectedItem) {
-		if (selectedItem.equals("JSON"))
-			DB.usersAdm = new AdminUser();
-		else if (selectedItem.equals("XML"))
-			DB.usersAdm = new SimpleUser();
-	}
-
-	private void changeDB() {
-		if (DB.usersAdm instanceof AdminUser)
-			DB.usersAdm  = new SimpleUser();
-		else if (DB.usersAdm  instanceof SimpleUser)
-			DB.usersAdm  = new AdminUser();
-	}
-
-	private void login(String username, String pass, Stage stage) throws LoginException, DBException {
-
-		try {
-			withCurrentDB(username, pass, stage);
-		} catch (DBException exception) {
-			changeDB();
-			try {
-				withCurrentDB(username, pass, stage);
-			} catch (DBException newException) {
-				throw new LoginException();
-			}
-		}
-	}
-	private void withCurrentDB(String username, String pass, Stage stage) throws DBException {
-		User user = DB.usersAdm.getUser(username);
-		try {
-			if (!user.getPass().equals(pass)) {
-				LoginError();
-				return;
-			}
-		} catch (NullPointerException ex) {
-			throw new DBException();
-		}
-		try {
-			new MainStage(new Stage(), txtUsername.getText());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	// creating method Error java to LoginStage
-	private void LoginError() {
-		Alert alertError = new Alert(AlertType.INFORMATION);
-		alertError.setTitle(Strings.loginError);
-		alertError.setHeaderText(Strings.reportingError);
-		alertError.showAndWait();
-	}
+	
+//	private  User checkLogin(String txtUsername, String txtPassword) throws LoginError {
+//		for (User user : users) {
+//			if  (user.getName().contentEquals(txtUsername) & (user.getPass().contentEquals(txtPassword)));
+//			return user;
+//		}
+//		
+//}
+	
 }

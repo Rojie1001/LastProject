@@ -20,7 +20,9 @@ public class Strings {
 	public static final String info02 = "R$ 48.900,00";
 	public static final String info03 = "R$ 15.500,00";
 	
-	
+	//RegisterStage Strings
+	public static final String name = "Digite seu nome";
+	public static final String rpassword = "Digite uma senha";
 
 	//Title
 	public static final String titleLogin = "Login";
